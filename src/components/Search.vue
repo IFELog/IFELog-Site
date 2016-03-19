@@ -1,17 +1,24 @@
 <template>
-  <img class="logo" src="https://www.baidu.com/img/bd_logo1.png">
+  <img class="logo" src="../assets/logo.png">
   <div class="searchbox-wrap">
     <div class="search">
   		<div class="search_input ui_search_box">
-        <span class="search_sr" >
-          <input type="text" id="search_text">
+        <span class="search_sr" :class="{ 'foncuson': isFoucusOnSearch }">
+          <input type="text" @focus="onFocusSearchBox">
         </span>
-				<div class="suggest_nc" id="search_result">
-					<!-- <a href="javascript:">测试内容啊 啊啊啊啊啊</a> -->
+				<div class="suggest_bd" v-show="isShowSearchResult">
+          <ul>
+            <li>测试内容啊 啊啊啊啊啊</li>
+            <li>测试内容啊 啊啊啊啊啊</li>
+            <li>测试内容啊 啊啊啊啊啊</li>
+            <li>测试内容啊 啊啊啊啊啊</li>
+            <li>测试内容啊 啊啊啊啊啊</li>
+            <li>测试内容啊 啊啊啊啊啊</li>
+          </ul>
 				</div>
   		</div>
       <span class="search_btn">
-        <input type="submit" value='{{ btnValue }}' id="submit_btn">
+        <input type="submit" value='{{ btnValue }}'>
       </span>
   	</div>
   </div>
@@ -21,7 +28,14 @@
 export default {
   data () {
     return {
-      btnValue: 'Log 一下'
+      btnValue: 'Log 一下',
+      isFoucusOnSearch: false,
+      isShowSearchResult: false
+    }
+  },
+  methods: {
+    onFocusSearchBox: function (event) {
+      this.isFoucusOnSearch = true
     }
   }
 }
@@ -30,7 +44,7 @@ export default {
 <style lang="stylus">
   .logo
     display: block
-    width: 270px
+    width: 180px
     margin: 0 auto
 
   .searchbox-wrap
@@ -55,10 +69,11 @@ export default {
         vertical-align: top
         border: 1px solid #b6b6b6
         border-right-width: 0
-        border-color: #b8b8b8 transparent #ccc #b8b8b8
+        border-color: #b8b8b8 transparent #b8b8b8 #b8b8b8
         &:hover
-          border-color: #999 transparent #b3b3b3 #999
-          /*     border-color: #4791ff transparent #4791ff #4791ff */
+          border-color: #999 transparent #999 #999
+        &.foncuson
+          border-color: #68C243 transparent #68C243 #68C243
 
         input
           width: 520px
@@ -83,7 +98,7 @@ export default {
           color: white
           font-size: 15px
           letter-spacing: 1px
-          background: #3385ff
+          background: #68C243
           border: 0
           outline: 0
           -webkit-border-radius: 0
@@ -96,12 +111,29 @@ export default {
         background-position:-100px 0
 
       .suggest_bd
-        display: none
         position: absolute
-        width: 100%
-        left: -1px
-        background: white
-        top: 30px
-        border: 1px solid #999
+        z-index: 1
+        width: 538px
+        background: #fff
+        border: 1px solid #ccc
+        margin-top: -1px;
+        overflow: hidden
+        box-shadow: 1px 1px 3px #ededed
+        -webkit-box-shadow: 1px 1px 3px #ededed
+        -moz-box-shadow: 1px 1px 3px #ededed
+        -o-box-shadow: 1px 1px 3px #ededed
+        li
+          width: 522px;
+          padding: 0 8px;
+          position: relative;
+          cursor: default;
+          text-decoration: none
+          color: #383838;
+          font: 14px arial;
+          line-height: 22px;
+          &:hover
+            background-color: rgba(104, 194, 67, .2)
+
+
 
 </style>

@@ -40,7 +40,7 @@ export default {
 
 
   .container
-    margin-top: 200px
+    margin-top: 140px
     /*display: flex
     align-items: center
     justify-content: center*/

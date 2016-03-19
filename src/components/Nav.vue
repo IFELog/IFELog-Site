@@ -13,10 +13,7 @@ export default {
   data () {
     return {
       items: [
-        { nav: 'Home', url: 'aaa' },
-        { nav: 'About', url: 'aaa' },
-        { nav: 'GitHub', url: 'aaa' },
-        { nav: 'Content', url: 'aaa' }
+        { nav: 'GitHub', url: 'https://github.com/IFELog/IFELog-Site' }
       ]
     }
   }
